@@ -25,6 +25,7 @@ def text_extractor(file_path,get_text=True):
 
 # This function extracts the equations and then add them to a separate file
 def eqn_extractor(data):
+    save_path="G:\Sahil\equation.docx"
     # print("THE EQUATION ARE :-")
     if(re.findall(r"[0-9]+",item)):
         newitem=item
@@ -32,14 +33,19 @@ def eqn_extractor(data):
         if(re.findall(r"[+,-]+",newitem)):
             print(newitem,end=""+",")
             file.add_paragraph(newitem)
-            file.save("G:\Sahil\equation.docx")
+            file.save(save_path)
             # os.system("start G:\Sahil\equation.docx")
+# You can uncomment above line if you want to open the saved docx file.
+
     else:
         print(end="")
 
 if __name__ == '__main__':
     path="G:/Sahil/Python Codes/Internship/data.docx"
     image_path="G:\Sahil\Python Codes\Internship\Images and graphs"
+
+    # You can change the path according to your own requirement
+
     image_extractor(path,image_path)
     data=text_extractor(path)
 item = " "
